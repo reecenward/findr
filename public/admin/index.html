@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>App</title>
-    <link rel="stylesheet" href="/public/styles.css">
-    <script src="/public/delete.js"></script>
-    <script src="/public/edit.js"></script>
+    <link rel="stylesheet" href="/public/admin/styles.css">
+    <script src="/public/admin/delete.js"></script>
+    <script src="/public/admin/edit.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
     <script>
         fetch('/username')
@@ -34,19 +34,16 @@
                 }
             });
     </script>
-
-
 </head>
 
 <body>
 
     <a href="/logout">Log out</a>
+    <br>
+    <br>
     <div id="qrcode"></div>
+    <br>
     <a href="/" id="youruserpage">Your user page</a>
-
-    <div id="container">
-
-    </div>
 
 
 
@@ -56,17 +53,20 @@
 
         <div id="poop-list">
             <ul id="item-list"></ul>
-            <script src="/public/getItems.js"></script>
-
+            <script src="/public/admin/getItems.js"></script>
         </div>
+
         <div id="textbox">
             <form id="myForm">
+
+
                 <input type="text" id="item" name="item" placeholder="Ex: Apples" pattern="[a-zA-Z0-9]+" autofocus required><br>
+
                 <input type="submit" id="submit" value=">">
-                <script src="/public/create.js"></script>
+                <script src="/public/admin/create.js"></script>
             </form>
             <button id="megaDelete">Mega Delete</button>
-            <script src="/public/megaDelete.js"></script>
+            <script src="/public/admin/megaDelete.js"></script>
         </div>
     </div>
     <div id="spacer"></div>

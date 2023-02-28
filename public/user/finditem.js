@@ -57,28 +57,9 @@ class MyCounter extends HTMLElement {
         </div>`;
     }
 }
+
 customElements.define("my-counter", MyCounter);
 
-
-// function updateItem(items) {
-//     // Convert the items to an array
-//     const itemArray = Array.isArray(items) ? items : [items];
-
-//     // Clear the current list of items on the page
-//     document.querySelector('#itemList').innerHTML = '';
-
-//     // Iterate through the list of items
-//     itemArray.forEach(item => {
-//         // Create a new my-counter element
-//         const counter = document.createElement('my-counter');
-
-//         // Set the count attribute of the element to the item data
-//         counter.setAttribute('count', item);
-
-//         // Append the element to the list of items on the page
-//         document.querySelector('#itemList').appendChild(counter);
-//     });
-// }
 function updateItem(items) {
     // Convert the items to an array
     const itemArray = Array.isArray(items) ? items : [items];
@@ -104,7 +85,6 @@ function updateItem(items) {
     });
 }
 
-
 //web socket part
 //=======================================================
 
@@ -118,6 +98,7 @@ const socket = new WebSocket(`ws://localhost:4000`);
 const form = document.querySelector('#myForm');
 const textbox = document.querySelector('#item');
 
+// on input
 textbox.addEventListener('input', event => {
     // Send the data in the textbox to the WebSocket server
     console.log(lastPart);
@@ -128,6 +109,7 @@ textbox.addEventListener('input', event => {
     }))
 });
 
+// on submit
 form.addEventListener('submit', event => {
     event.preventDefault(); // Prevent the form from submitting
 
@@ -139,6 +121,7 @@ form.addEventListener('submit', event => {
     socket.send(input, lastPart);
 });
 
+// when received response
 // Set up an event listener for messages from the server
 socket.onmessage = function(event) {
     const itemArray = JSON.parse(event.data);

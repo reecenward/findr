@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const WebSocket = require('ws');
 const cookieParser = require('cookie-parser');
-const { requireAuth, checkUser } = require('./authMiddleware');
+const { requireAuth, checkUser } = require('./Middleware/authMiddleware');
 const UserItems = require('./model/UserItems');
 
 const adminRoute = require("./routes/adminRoutes");
@@ -18,14 +18,9 @@ app.use('/adminRoute', adminRoute);
 app.use('/loginRoute', loginRoute);
 app.use('/signupRoute', signupRoute);
 
-// Serve the files in the public folder as static assets
 app.use('/public', express.static('public'));
 
-// Set up a route to handle requests to the root path
-
 app.get("*", checkUser);
-
-
 
 app.get('/username', (req, res) => {
     if (res.locals.user) {
@@ -36,7 +31,7 @@ app.get('/username', (req, res) => {
 });
 
 app.get('/', requireAuth, (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
+    res.sendFile(__dirname + '/public/admin/index.html');
 });
 
 // app.get('/user', (req, res) => {

@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const User = require('./model/User');
+const User = require('../model/User');
 
 const requireAuth = (req, res, next) => {
     const token = req.cookies.jwt;
@@ -40,7 +40,6 @@ const checkUser = (req, res, next) => {
                 next();
             }
         })
-
     } else {
         res.locals.user = null;
         next();
